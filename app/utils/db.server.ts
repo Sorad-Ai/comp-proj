@@ -2,8 +2,7 @@
 import { MongoClient } from 'mongodb';
 import invariant from "tiny-invariant";
 
-invariant(process.env.MONGODB_URI, "MONGODB_URI must be defined");
-const uri = process.env.MONGODB_URI;
+const uri = 'mongodb+srv://soradai707:XYMWVSU7uoL4XRBS@cluster0.plggy.mongodb.net/';
 
 let client: MongoClient | null = null;
 

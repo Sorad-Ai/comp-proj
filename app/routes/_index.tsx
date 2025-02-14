@@ -1,22 +1,23 @@
-// app/routes/_index.tsx
-import { useLoaderData } from "@remix-run/react";
+// app/routes/test-db.tsx
 import { json, LoaderFunction } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { getDb } from "~/utils/db.server";
 
 export const loader: LoaderFunction = async () => {
   try {
-    await getDb(); // Just try to connect
-    return json({ message: "Connected to MongoDB!" });
+    await getDb();
+    return json({ message: "DB connection test: Success!" });
   } catch (error: any) {
-    return json({ message: `Failed to connect: ${error.message}` }, { status: 500 });
+    console.error("DB test error:", error);
+    return json({ message: `DB connection test: Fail: ${error.message}` }, { status: 500 });
   }
 };
 
-export default function IndexRoute() {
+export default function TestDbRoute() {
   const data = useLoaderData<typeof loader>();
   return (
     <div>
-      <h1>MongoDB Status</h1>
+      <h1>DB Connection Test</h1>
       <p>{data.message}</p>
     </div>
   );
