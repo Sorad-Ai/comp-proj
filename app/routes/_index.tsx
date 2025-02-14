@@ -17,7 +17,7 @@ export default function TestDbRoute() {
   const data = useLoaderData<typeof loader>();
   return (
     <div>
-      <h1>DB Connection Test</h1>
+      <h1>DB Conne                 ction Test</h1>
       <p>{data.message}</p>
     </div>
   );
